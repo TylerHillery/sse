@@ -1,7 +1,9 @@
 # @fastify/sse
 
 [![NPM Version](https://img.shields.io/npm/v/@fastify/sse.svg)](https://npmjs.org/package/@fastify/sse)
-[![CI](https://github.com/fastify/sse/workflows/CI/badge.svg)](https://github.com/fastify/sse/actions)
+[![CI](https://github.com/TylerHillery/sse/workflows/CI/badge.svg)](https://github.com/TylerHillery/sse/actions)
+
+> **Note:** This is a fork with ESM support. Once the [Fastify team publishes an official ESM version](https://github.com/fastify/sse/issues/14), you should migrate to that.
 
 Server-Sent Events plugin for Fastify. Provides first-class SSE support with clean API integration, session management, and streaming capabilities.
 
@@ -18,7 +20,7 @@ Server-Sent Events plugin for Fastify. Provides first-class SSE support with cle
 ## Install
 
 ```bash
-npm i @fastify/sse
+npm i @tylerhillery/fastify-sse
 ```
 
 ## Quick Start
@@ -356,7 +358,7 @@ Full TypeScript support included:
 
 ```typescript
 import fastify from 'fastify'
-import fastifySSE, { SSEMessage } from '@fastify/sse'
+import fastifySSE, { SSEMessage } from '@tylerhillery/fastify-sse'
 
 const app = fastify()
 await app.register(fastifySSE)

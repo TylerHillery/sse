@@ -1,8 +1,6 @@
-'use strict'
-
-const fp = require('fastify-plugin')
-const { Readable, Transform } = require('stream')
-const { pipeline } = require('stream/promises')
+import fp from 'fastify-plugin'
+import { Readable, Transform } from 'stream'
+import { pipeline } from 'stream/promises'
 
 /**
  * Format an SSE message according to the specification
@@ -453,7 +451,7 @@ async function fastifySSE (fastify, opts) {
   })
 }
 
-module.exports = fp(fastifySSE, {
+export default fp(fastifySSE, {
   fastify: '5.x',
   name: '@fastify/sse'
 })
