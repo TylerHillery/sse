@@ -1,9 +1,7 @@
-'use strict'
-
-const { test } = require('node:test')
-const { strict: assert } = require('node:assert')
-const Fastify = require('fastify')
-const fastifySSE = require('../index.js')
+import { test } from 'node:test'
+import { strict as assert } from 'node:assert'
+import Fastify from 'fastify'
+import fastifySSE from '../index.js'
 
 test('reply.sse.sendHeaders() should send headers manually', async (t) => {
   const fastify = Fastify({ logger: false })

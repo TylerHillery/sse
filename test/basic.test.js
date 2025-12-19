@@ -1,10 +1,9 @@
-'use strict'
-
-const { test } = require('node:test')
-const { strict: assert } = require('node:assert')
-const Fastify = require('fastify')
-const { Readable } = require('stream')
-const fastifySSE = require('../index.js')
+import { test } from 'node:test'
+import { strict as assert } from 'node:assert'
+import Fastify from 'fastify'
+import { Readable } from 'stream'
+import { pipeline } from 'stream/promises'
+import fastifySSE from '../index.js'
 
 test('basic SSE functionality', async (t) => {
   const fastify = Fastify({ logger: false })
@@ -264,8 +263,6 @@ test('reply.sse.stream() for pipeline operations', async (t) => {
   await fastify.register(fastifySSE)
 
   fastify.get('/pipeline', { sse: true }, async (request, reply) => {
-    const { pipeline } = require('stream/promises')
-
     // Create a source stream with test data
     const sourceStream = Readable.from([
       { id: '1', data: 'first' },

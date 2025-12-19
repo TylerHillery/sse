@@ -1,10 +1,9 @@
-'use strict'
-
-const { test } = require('node:test')
-const { strict: assert } = require('node:assert')
-const { setTimeout: sleep } = require('node:timers/promises')
-const Fastify = require('fastify')
-const { request } = require('undici')
+import { test } from 'node:test'
+import { strict as assert } from 'node:assert'
+import { setTimeout as sleep } from 'node:timers/promises'
+import Fastify from 'fastify'
+import { request } from 'undici'
+import fastifySSE from '../index.js'
 
 test('handles body.destroy() without uncaught exception', async (t) => {
   const app = Fastify({ logger: false })
@@ -14,7 +13,7 @@ test('handles body.destroy() without uncaught exception', async (t) => {
   })
 
   // Register @fastify/sse plugin
-  await app.register(require('../index.js'))
+  await app.register(fastifySSE)
 
   // Simple SSE endpoint that sends data and keeps alive
   app.get('/sse', { sse: true }, async (request, reply) => {
@@ -57,7 +56,7 @@ test('handles body.destroy() with keepAlive connection', async (t) => {
   })
 
   // Register @fastify/sse plugin
-  await app.register(require('../index.js'))
+  await app.register(fastifySSE)
 
   // SSE endpoint that keeps connection alive
   app.get('/sse', { sse: true }, async (request, reply) => {
@@ -100,7 +99,7 @@ test('handles body.destroy() with streaming data', async (t) => {
   })
 
   // Register @fastify/sse plugin
-  await app.register(require('../index.js'))
+  await app.register(fastifySSE)
 
   // SSE endpoint that streams data
   app.get('/sse', { sse: true }, async (request, reply) => {
